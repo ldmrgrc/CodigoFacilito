@@ -1,3 +1,5 @@
 import "../css/app.scss";
 
-import "../javascript/slider/sliderDOM";
+import "./slider/sliderDOM";
+
+import "./maps";
