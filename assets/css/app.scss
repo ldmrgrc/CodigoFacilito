@@ -16,9 +16,11 @@ body {
 
 img {
   min-width: 100%;
+  height: auto;
 }
 
 figure {
+  display: flex;
   position: relative;
   min-height: 100%;
   margin: 0px;
@@ -93,11 +95,30 @@ figure {
 }
 
 .slider {
-  .image {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
+  .controls {
+    @include text-right;
+    margin-bottom: 10px;
+    padding-right: 40px;
+    display: none;
+    img {
+      min-width: inherit;
+    }
+    .arrow-right,
+    .arrow-left {
+      height: 30px;
+      @include transition;
+      transition-duration: 0.15s;
+      cursor: pointer;
+      &:hover {
+        opacity: 0.2;
+      }
+    }
   }
+  // .image {
+  //   min-height: 100vh;
+  //   display: flex;
+  //   align-items: center;
+  // }
   header {
     background-color: $blue;
     color: $white;
@@ -149,26 +170,20 @@ figure {
   .container {
     @include main-text;
     font-size: 1.1em;
-    figure {
-      float: right;
-      margin-left: 20px;
-    }
     p {
       line-height: 2em;
       &:nth-of-type(1) {
         margin-bottom: 3em;
         position: relative;
-
-        &::after {
-          content: "";
-          background-color: $blue;
-          position: absolute;
-          bottom: -1.5em;
-          height: 5px;
-          width: 50%;
-          z-index: -1;
-        }
       }
+    }
+  }
+}
+
+.grid {
+  .grid-main-area {
+    .image {
+      margin-top: 25px;
     }
   }
 }
@@ -209,7 +224,13 @@ figure {
   .container {
     grid-column: 2 / 12;
   }
-
+  .grid {
+    .grid-main-area {
+      .image {
+        margin-top: 0;
+      }
+    }
+  }
   .grid-main-area {
     display: grid;
     grid-template-columns: repeat(9, 1fr);
@@ -222,6 +243,28 @@ figure {
       transform: translateX(100px);
       width: 100%;
       min-height: 350px;
+    }
+  }
+
+  .mission {
+    .container {
+      figure {
+        float: right;
+        margin-left: 20px;
+      }
+      p {
+        &:nth-of-type(1) {
+          &::after {
+            content: "";
+            background-color: $blue;
+            position: absolute;
+            bottom: -1.5em;
+            height: 5px;
+            width: 50%;
+            z-index: -1;
+          }
+        }
+      }
     }
   }
 
